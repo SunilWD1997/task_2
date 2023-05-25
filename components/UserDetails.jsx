@@ -5,6 +5,11 @@ import Image from "next/image";
 
 import {MdMenu} from 'react-icons/md'
 import {RxCross2} from 'react-icons/rx'
+import {MdOutlineEmail, MdWorkOutline} from 'react-icons/md'
+import {BsPersonGear, BsPersonVcard} from 'react-icons/bs'
+
+
+
 
 import { idContext } from "@/pages";
 import { loadingContext } from "@/pages";
@@ -62,22 +67,26 @@ setLoading(false);
   <div className="flex flex-col gap-7 pl-10 pr-2 py-5">
 
     <div>
-    <h2 className="font-bold">Full Name</h2>
+      <div className="flex items-center gap-2"><BsPersonVcard className="text-[18px]"/><h2 className="font-bold">Full Name</h2></div>
+    
     <p className="font-semibold text-[25px] text-[grey] border-t-[3px] inline-block"><span>{state?.profile?.firstName}</span> <span >{state?.profile?.lastName}</span></p>
    </div>
 
    <div>
-        <h2 className="font-bold">Email</h2>
+    <div className="flex items-center gap-2"><MdOutlineEmail className="text-[20px]"/> <h2 className="font-bold">Email</h2></div>
+        
         <p className="font-semibold text-[25px] text-[grey] border-t-[3px] inline-block">{state?.profile?.email}</p>
     </div>
 
     <div>
-        <h2 className="font-bold ">Job Tittle</h2>
+      <div className="flex items-center gap-1"><MdWorkOutline className="text-[20px]"/> <h2 className="font-bold ">Job Tittle</h2></div>
+        
         <p className="font-semibold text-[25px] text-[grey] border-t-[3px] inline-block">{state?.jobTitle}</p>
     </div>
 
    <div>
-    <h2 className="font-bold border-b-[3px] inline-block">About Me</h2>
+    <div className="flex items-center gap-1"><BsPersonGear className="text-[20px]"/><h2 className="font-bold border-b-[3px] inline-block">About Me</h2></div>
+    
     <p className="font-semibold text-[25px] text-[grey] ">{state?.Bio}</p>
    </div>
     
