@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import Image from "next/image";
-// import { Loader } from "next/dynamic";
+
+
+import {MdMenu} from 'react-icons/md'
+import {RxCross2} from 'react-icons/rx'
 
 import { idContext } from "@/pages";
 import { loadingContext } from "@/pages";
@@ -11,7 +14,7 @@ import Loader from "./Loader";
 const UserDetails = () => {
   const[state, setState] =useState(null);
   const { userId } = useContext(idContext);
-  const {  error, setError, loading, setLoading } = useContext(loadingContext);
+  const {  error, setError, loading, setLoading, setMobileMenu, mobileMenu } = useContext(loadingContext);
 
   // console.log(userId)
 
@@ -37,9 +40,11 @@ setLoading(false);
   console.log(state);
 
   return (
-    <div className=" fixed top-[0] w-[100vw] md:w-auto md:relative md:w-[50vw] lg:auto shadow-lg">
+    <div className=" fixed top-[0] w-[100vw]  md:relative md:w-[50vw] lg:auto shadow-lg">
       {/* <h2 className="font-bold">User Details</h2> */}
-
+      {/* mobilmenu starts here */}
+       <div onClick={()=>setMobileMenu(!mobileMenu)} className="md:hidden cursor-pointer absolute top-[50px] shadow-lg border bg-[white] z-40 w-[40px] h-[40px] rounded-full flex justify-center items-center hover:bg-[grey]">{mobileMenu?<MdMenu className="text-[22px]"/>: <RxCross2 className="text-[22px]"/>}</div>
+      {/* mobilmenu starts here */}
       {/* user details starts here */}
     {error? <div className="sticky top-[50%] px-4 text-[20px] text-[red] font-semibold">Something went wrong!</div>: loading? <Loader></Loader> : <div className="border-l h-[100vh] mt-[90px] md:mt-auto">
 

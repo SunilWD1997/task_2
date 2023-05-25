@@ -9,14 +9,14 @@ export const idContext = createContext();
 export const loadingContext = createContext();
 
 export default function Home({ userList }) {
-  const [state, setState] = useState(null);
+  const [mobileMenu, setMobileMenu] = useState(true);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   const [userId, setUserId] = useState("11");
 
   return (
-    <loadingContext.Provider value={{state, setState,loading, setLoading, error, setError}}>
+    <loadingContext.Provider value={{setMobileMenu, mobileMenu,loading, setLoading, error, setError}}>
     <idContext.Provider value={{userId: userId, setUserId: setUserId}}>
 
       {/* main index.js parent div starts here */}
