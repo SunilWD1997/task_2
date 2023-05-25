@@ -1,0 +1,73 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+*{
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.meetup{
+  color: #E56135;
+  border: 2px solid #A9AEB8;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 5px;
+  margin: 0 25px;
+  padding: 5px 0;
+  font-size: 15px;
+  cursor: pointer;
+}
+.meetup:hover{
+background-color: #e0e0e0;
+transition: all 0.7;
+}
+
+.jobs{
+  color: #02B875;
+  border: 2px solid #A9AEB8;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 5px;
+  margin: 0 25px;
+  padding: 5px 0;
+  font-size: 15px;
+  cursor: pointer;
+
+}
+
+.jobs:hover{
+  background-color: #e0e0e0;
+  transition: all 0.7;
+  }
+
+
+
+  .scroll_bar::-webkit-scrollbar{
+    width: 5px;
+    height: 100px;
+    /* background: green; */
+    scroll-behavior: smooth;
+    
+  }
+  .scroll_bar::-webkit-scrollbar-track{
+    width: 10px;
+    height: 100px;
+    background: rgb(192, 192, 192);
+    /* display: none; */
+  }
+  .scroll_bar::-webkit-scrollbar-thumb{
+    
+    background: rgb(117, 117, 117);
+    border-radius: 10px;
+    /* display: none; */
+  }
+
+
+
+  
