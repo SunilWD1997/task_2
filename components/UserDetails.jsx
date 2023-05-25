@@ -1,22 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import Image from "next/image";
+// import { Loader } from "next/dynamic";
 
 import { idContext } from "@/pages";
+import { loadingContext } from "@/pages";
 import fetchDataFromApi from "@/utills/api";
+import Loader from "./Loader";
 
 const UserDetails = () => {
+  const[state, setState] =useState(null);
   const { userId } = useContext(idContext);
+  const {  error, setError, loading, setLoading } = useContext(loadingContext);
 
   // console.log(userId)
 
-  const [state, setState] = useState(null);
+ 
+  
 
   useEffect(() => {
     const fetchUserDetail = async() =>{
-      const {userList} = await fetchDataFromApi(`/users/${userId}`);
-      
+try {
+  setLoading(true)
+  const {userList} = await fetchDataFromApi(`/users/${userId}`);
       setState(userList);
+
+} catch (error) {
+  setError(true);
+}
+setLoading(false);
+      
     }
     fetchUserDetail();
   }, [userId]);
@@ -24,11 +37,11 @@ const UserDetails = () => {
   console.log(state);
 
   return (
-    <div className="w-[40vw] ">
+    <div className=" fixed top-[0] w-[100vw] md:w-auto md:relative md:w-[50vw] lg:auto shadow-lg">
       {/* <h2 className="font-bold">User Details</h2> */}
 
       {/* user details starts here */}
-      <div className="border-l h-[100vh] mt-[90px] md:mt-auto">
+    {error? <div className="sticky top-[50%] px-4 text-[20px] text-[red] font-semibold">Something went wrong!</div>: loading? <Loader></Loader> : <div className="border-l h-[100vh] mt-[90px] md:mt-auto">
 
        <div className="relative bg-[pink] w-[100%] h-[250px] "> 
         <Image src={state?.avatar} width='200' height='200' alt="img" className="w-[100%] h-[100%] object-cover blur-[1px]"/>
@@ -43,7 +56,7 @@ const UserDetails = () => {
 
   <div className="flex flex-col gap-7 pl-10 pr-2 py-5">
 
-  <div>
+    <div>
     <h2 className="font-bold">Full Name</h2>
     <p className="font-semibold text-[25px] text-[grey] border-t-[3px] inline-block"><span>{state?.profile?.firstName}</span> <span >{state?.profile?.lastName}</span></p>
    </div>
@@ -68,7 +81,7 @@ const UserDetails = () => {
   
   </div>
 
-      </div>
+      </div>}
       {/* user details ends here */}
 
 
